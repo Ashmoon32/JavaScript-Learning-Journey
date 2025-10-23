@@ -196,3 +196,59 @@ console.log(add2(num5));
 
 
 console.log("--------------------------------- ");
+
+// String object
+
+let num6 = 3.14159;
+console.log(num6.toFixed(3));
+console.log(num6.toFixed(2));
+
+//String constructor, String Literal and Template Literal
+
+let name1 = "Ashmoon";
+let greet = `Hello ${name1}`;
+let welcome = new String("Welcome");
+
+console.log(name1.length);
+console.log(welcome.length);
+console.log('Hello'.length);
+
+// Standard String Method
+console.log(name1[2]);
+console.log(name1.charAt(0));
+console.log(name1.toUpperCase());
+console.log(name1.toLowerCase());
+let name2 = " Hello AshMoon ";
+console.log(name2.trim()); //remove space of both front and back
+console.log(name1.substr(0,3)); // result -> Ash
+
+let text = "Hello World";
+
+console.log(text.split(" ")); // ["Hello", "World"];
+console.log(text.split(" ")[0]); // Hello
+console.log(text.split(" ").length); // 2
+console.log(text.split("")); // ['H', 'e', 'l', 'l',  'o', ' ', 'W', 'o',  'r', 'l', 'd']
+console.log(text.split("").length); // 11
+console.log(text.split("")[0]); // H
+
+
+// The Combination of string's split and array's join 
+
+const text1 = "This is a sample text";
+const modifiedText = text1.split(" ").join("_");
+console.log(modifiedText);
+
+//reverse 
+const originalWord = "Ashmoon Ashmoon";
+console.log(originalWord.split(" "));
+console.log(originalWord.split(""));
+const reversedWord = originalWord.split("").reverse().join("");
+console.log(originalWord.split("").reverse().join("|"));
+console.log(reversedWord);
+// I have no idea what i am doing :)))
+
+//Formatting 
+
+const rawData = "John Doe|25|Engineer";
+const formattedData = rawData.split("|").join(" - ");
+console.log(formattedData); // Arr ha! I get it now (●'◡'●)
