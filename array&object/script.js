@@ -130,7 +130,7 @@ console.log(value3);
 
 console.log("--------------------------------- ");
 
-// You can use with the combination of all these method 
+// You can use the combination of all these methods
 
 let number = [ 1, 2, 3, 4, 5, 6];
 
@@ -139,5 +139,60 @@ let finalValue = number.map( n => n + 1).filter( n => n % 2).reduce( (a, n) => a
 // guess first the answer , genius :))
 
 console.log(finalValue);
+
+console.log("--------------------------------- ");
+
+// spread operator
+
+let num1 = [1, 2, 3];
+let alphas = [ 'a', 'b', 'c'];
+let result1 = [num1, alphas];
+let result2 = [...num1, ...alphas];
+console.log(result1);
+console.log(result2);
+
+console.log("--------------------------------- ");
+
+let num2 = [1, 2, 3];
+let four = [...num2, 4];
+let zero = [0, ...num2]
+console.log(four);
+console.log(zero);
+
+console.log("--------------------------------- ");
+
+function add1(a,b){
+    return a + b;
+}
+
+let num3 = [123, 456];
+
+console.log(add1(num3[0],num3[1]));
+console.log(add1(...num3));
+
+console.log("--------------------------------- ");
+
+// Destructuring
+
+// let num4 = [124, 456];
+// let a = num4[0];
+// let b = num4[1];
+
+// console.log(a);
+// console.log(b);
+
+//instead of above , write like this
+
+num4 = [124, 456];
+let [a, b] = num4;
+console.log(a);
+console.log(b);
+
+function add2([a, b]){
+    return a + b;
+}
+let num5 = [123, 456];
+console.log(add2(num5));
+
 
 console.log("--------------------------------- ");
