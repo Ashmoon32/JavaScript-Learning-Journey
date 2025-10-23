@@ -120,7 +120,7 @@ let value3 = nums.reduce(function(a, n) {
 
 //short
 
-// In reduce method , there are two parameters! 'a' is accumulative value , value is 'null' in initial then 'n' is current value from array.
+// In reduce method , there are two parameters! 'a' is accumulative value , value is 'null' in initial and 'n' is current value from array.
 // like this
 // nums = [1, 2, 3, 4, 5]; and a is null
 // a = null + n = 1 then a get 1, next now a = 1 + n = 2 ,so now a is 3 and add like this till n = 5 , and it return the total value '15'
@@ -252,3 +252,153 @@ console.log(reversedWord);
 const rawData = "John Doe|25|Engineer";
 const formattedData = rawData.split("|").join(" - ");
 console.log(formattedData); // Arr ha! I get it now (●'◡'●)
+
+// Regular Expression
+//Search and Replace Method
+
+String.prototype.greet = function() {
+    return "Hello, World"
+}
+
+let str = "Some String";
+console.log(str.greet()); // dangerous if you don't know well the impact of this .(idk too :))
+
+console.log("--------------------------------- ");
+console.log("--------------------------------- ");
+
+// Object
+
+// To creat object, there are two ways as Array.
+// Object literal
+
+let cat = {
+    color: "Yellow",
+    name: "Thel Thel",
+    legs: 4, // you can add or not comma(,) in last , it can save your time when you accidentally added new values but you forgot to add comma.
+ };
+
+ //can use both way to use object
+ 
+ console.log(cat.legs);
+ console.log(cat["color"]);
+
+ let bird = {
+    color: "Green",
+    legs: 2,
+ }
+
+ bird.name = "Shwe Gal";
+ bird["color"] = "Blue";
+
+ console.log(bird);
+
+ // object spread and destructuring
+
+ let user = { name: "Ash", age: 20};
+
+ function greet1({name, age}) {
+    return `Hello ${name}, you are ${age} years old`;
+ }
+
+ console.log(greet1(user));
+
+ let {name , age} = user
+
+ console.log(greet1(user));
+ console.log(user);
+
+ console.log("--------------------------------- ");
+
+ let user1 = {
+    name: "Ashmoon",
+    hello: function() {
+        return `Hello, I'm ${this.name}`;
+    }
+ }
+
+ console.log(user1.name); // Ashmoon
+ user1.name = "Nyein"; 
+ console.log(user1.hello()); // Hello, I'm Nyein
+
+user1 = {
+    name: "Ashmoon",
+    hello() {
+        return `Hello, I'm ${this.name}` // Use 'this' keyword when you use object property and method
+    }
+}
+
+let name3 = "Moon";
+let age1 = 22;
+
+let user2 = {
+    name4: name3,
+    age2: age1,
+}
+
+//short form
+// name3 = "Moon";
+// age1 = 22;
+// user2 = {name3, age1};
+
+console.log(user2.name4);
+console.log(user2.age2);
+
+console.log("--------------------------------- ");
+
+let person = {
+    name: "La La",
+    age: 22,
+    education: [
+        "B.Sc.",
+        "MBA",
+    ]
+}
+console.log(person.education);
+
+ console.log("--------------------------------- ");
+
+ let people = [
+    { name: "Alice", age: 21, gender: "Female"},
+    { name: "Bob", age: 22, gender: "Male"},
+    { name: "Zack", age: 24, gender: "Male"},
+ ]
+
+ console.log(people);
+ console.log(people[0]);
+ console.log(people[1].name);
+ console.log(people[2].gender);
+
+ let nameOnly = people.map(p => p.name);
+ console.log(nameOnly);
+
+ let maleOnly = people.filter( p => p.gender === "Male");
+ console.log(maleOnly);
+
+ // just figure out yourself stupid dumbb.
+ let averageAge = people.reduce( ( sum, p) => 
+    sum + p.age, 0) / people.length;
+
+ console.log(averageAge);
+
+  console.log("--------------------------------- ");
+
+  // JSON , JavaScript Object Notation
+
+  //Change JavaScript Object to JSON String
+
+  let Person = { name: "Ashmoon", age: 21 };
+  JSON.stringify(Person);
+  console.log(JSON.stringify(Person));
+
+  console.log("--------------------------------- ");
+
+  //Change JSON String to JavaScript Object
+
+  let json = ' { "name": "Ashmoon", "age" : 21 } '
+  JSON.parse(json);
+  console.log(JSON.parse(json));
+
+  console.log("--------------------------------- ");
+
+
+
