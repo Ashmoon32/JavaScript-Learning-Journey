@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: relative;
+            width: 800px;
+            height: 30px;
+            padding: 10px;
+            background-color: skyblue;
+            border: 5px solid darkblue;
+        }
+
+        #ball {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            margin: 10px 0px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- DOM , Document Object Model
+    
+     Browser Standard Object 
+    - Navigator ,
+    - window,
+    - document
+    
+     -Node Object
+     -Root Node
+     -Element Node
+     -Text Node
+     -Child Node
+     -Parent Node
+     -Decedent Node -->
+
+     <div id="box">
+        <div id="ball"></div>
+     </div>
+
+     <button onclick="start()">Start</button>
+     <button onclick="stop()">Stop</button>
+    
+     <!-- DOM Properties & Methods -->
+
+     <!-- textContent and innerHTML -->
+     <div id="box1">
+        Box One Content
+     </div>
+
+     <div id="box2">
+        Box Two Content
+     </div>
+
+    <!-- appendChild -->
+
+    <div id="box3">
+        An Element.
+    </div>
+    
+    <script>
+
+        let ball = document.querySelector("#ball");
+        let left = 0;
+        let direction = "right";
+
+        let interval = setInterval(move, 10);
+        
+        function move() {
+            if(direction === "right") {
+                left += 1
+                if(left > 790) direction = "left"
+            } else {
+                left -= 1
+                if(left < 1) direction = "right"
+            }
+
+            ball.style.left = `${left}px`
+        }
+
+        function start() { 
+            interval = setInterval(move, 10)
+         }
+        function stop() { 
+            clearInterval(interval) 
+        }
+
+
+        document.querySelector("#box1").textContent = "Hello <b>DOM</b>" 
+        document.querySelector("#box2").innerHTML = "Hello <b>DOM</b>"
+
+        let hello = document.createTextNode("Hello DOM.")
+        document.querySelector("#box3").appendChild(hello)
+
+        let hello1 = document.createElement("b")
+        hello1.textContent = "Hello DOM."
+        document.querySelector("div").appendChild(hello1)
+
+        let hello2 = document.createElement("b")
+        hello2.textContent = "Hello DOM!!!!"
+        let div = document.querySelector("div")
+        div.insertBefore(hello2, div.firstChild)
+
+        // document.querySelector("div").remove()
+
+        //setAttribute
+
+        let hello3 = document.createElement("b")
+        hello3.textContent = "Hello DOM....."
+        hello.setAttribute("title", "A new element")
+        document.querySelector("div").appendChild(hello3)
+
+
+        // Selector Method
+        // document.getElementById()
+        // document.getElementsByClassName()
+        // document.getElementsByTagName()
+
+        // modern way
+        // document.querySelector()
+        // document.querySelectorAll()
+    </script>
+</body>
+</html>
