@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Sample</title>
+    <style>
+        #result {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        input, button {
+            margin: 5px 0px;
+            padding: 10px;
+            border-radius: 3px;
+            border: none;
+            background-color: #dfdfdf;
+            color: #000;
+              cursor: pointer;
+
+        }
+
+        button {
+            background-color: rgba(23, 12, 226, 0.7);
+            color: #fff;  
+        }
+
+        button:active {
+            background-color: #000;
+        }
+
+        input:focus {
+            border: 2px solid cyan;
+            box-shadow: 2px 2px 5px 2px cyan;
+        }
+
+        label {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Form</h1>
+    <div class="form">
+        <div>
+            <input type="text" id="a" placeholder="Enter anything...">
+            <label for="a">Please enter correct number!</label>
+        </div>
+        <div>
+            <input type="text" id="b" placeholder="Enter anything...">
+            <label for="b">Please enter correct number!</label>
+        </div>
+        <div id="result"></div>
+        <button id="add">Add</button>
+    </div>
+    
+    <script>
+
+
+            document.querySelector("#b").onkeyup = function () {
+                let a = parseInt(document.querySelector("#b").value);
+
+                if (!isNan(a)) {
+                    document.querySelector("[for=b]").style.display = "none";
+                }
+            }
+
+            document.querySelector("#a").onkeyup = function () {
+                let b = parseInt(document.querySelector("#a").value);
+
+                if (!isNaN(b)) {
+                    document.querySelector("[for=a]").style.display = "none";
+                }
+            }
+
+        
+
+    
+
+        document.querySelector("#add").onclick = function() {
+            let a = parseInt(document.querySelector("#a").value);
+            let b = parseInt(document.querySelector("#b").value);
+
+            // To make inputs from string to number
+            // let result = parseInt(a) + parseInt(b);
+           
+
+            // Check the inputs are numbers or not
+            if ( isNaN(a) ) {
+                document.querySelector("[for=a]").style.display = "inline";
+            }
+            //  else {
+            //     document.querySelector("#result").textContent = result;
+            // }
+
+            if ( isNaN(b) ) {
+                document.querySelector("[for=b]").style.display = "inline";
+            }
+
+          
+            let result = a + b;
+          
+            if( !isNaN(result)  ) {
+                document.querySelector("#result").textContent = result;
+            }
+               
+            
+        }
+
+        	// document.querySelector("#a").onkeyup = function () {
+            //         let a = parseInt(document.querySelector("#a").value)
+            //         if (!isNaN(a)) {
+            //             document.querySelector("[for=a]")
+            //                 .style.display = "none"
+            //         }
+            //     }
+
+            //     document.querySelector("#b").onkeyup = function () {
+            //         let a = parseInt(document.querySelector("#b").value)
+            //         if (!isNaN(a)) {
+            //             document.querySelector("[for=b]")
+            //                 .style.display = "none"
+            //         }
+            //     }
+
+            //     document.querySelector("#add").onclick = function () {
+            //         let a = parseInt(document.querySelector("#a").value)
+            //         let b = parseInt(document.querySelector("#b").value)
+
+            //         if (isNaN(a)) {
+            //             document.querySelector("[for=a]")
+            //                 .style.display = "inline"
+            //         }
+
+            //         if (isNaN(b)) {
+            //             document.querySelector("[for=b]")
+            //                 .style.display = "inline"
+            //         }
+
+            //         let result = a + b
+            //         if (!isNaN(result)) {
+            //             document.querySelector("#result").textContent = result
+            //         }
+            //     }
+       
+    </script>
+</body>
+</html>
