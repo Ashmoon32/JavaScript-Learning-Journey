@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #box {
+        #box, #Box3 {
             position: relative;
             width: 800px;
             height: 30px;
@@ -14,15 +14,67 @@
             border: 5px solid darkblue;
         }
 
-        #ball {
-            position: absolute;
+        #Box1, #Box2 {
+            position: relative;
+            width: 30px;
+            height: 800px;
+            padding: 10px;
+            background-color: skyblue;
+            border: 5px solid darkblue;
+
+        }
+
+
+        #ball, #ball1, #ball2, #ball3 {
+            position: relative;
             left: 0;
             top: 0;
             width: 30px;
             height: 30px;
             border-radius: 30px;
-            margin: 10px 0px;
+            margin: 5px 0px;
             background-color: red;
+        }
+
+        
+
+        .box-container {
+            background: #185a9d;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .main-box-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 5px solid black;
+            width: 830px;
+            background-color: #185a9d;
+        }
+
+        button {
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 10px auto;
+            background-color: black;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            transform: translateY(-4px);
+            box-shadow: 5px 5px 10px 3px rgba(12,25,112,0.5);
+        }
+
+        button:active {
+            background-color: blue;
         }
     </style>
 </head>
@@ -42,81 +94,159 @@
      -Parent Node
      -Decedent Node -->
 
-     <div id="box">
-        <div id="ball"></div>
+     <div class="main-box-container">
+        <div id="box">
+            <div id="ball"></div>
+        </div>
+        <div class="box-container">
+            <div id="Box1">
+                <div id="ball1"></div>
+            </div>
+            <h1>Welcome To My Messy DOM and CSS🤣🙃</h1>
+            <div id="Box2">
+                <div id="ball2"></div>
+            </div>
+        </div>
+        <div id="Box3">
+            <div id="ball3"></div>
+        </div>
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
      </div>
 
-     <button onclick="start()">Start</button>
-     <button onclick="stop()">Stop</button>
+  
     
      <!-- DOM Properties & Methods -->
 
      <!-- textContent and innerHTML -->
-     <div id="box1">
+     <!-- <div id="box1">
         Box One Content
      </div>
 
      <div id="box2">
         Box Two Content
-     </div>
+     </div> -->
 
     <!-- appendChild -->
-
+<!-- 
     <div id="box3">
         An Element.
-    </div>
+    </div> -->
     
     <script>
 
-        let ball = document.querySelector("#ball");
-        let left = 0;
-        let direction = "right";
+        let ball = document.querySelector("#ball"); // horizontal
+        let ball3 = document.querySelector("#ball3"); // horizontal
+        let ball1 = document.querySelector("#ball1"); // vertical
+        let ball2 = document.querySelector("#ball2"); // vertical
+        let left1 = 0;
+        let left2 = 0;
+        let top1 = 0;
+        let top2 = 0;
+        let direction1 = "right1";
+        let direction2 = "right2";
+        let direction3 = "bottom1";
+        let direction4 = "bottom2";
 
-        let interval = setInterval(move, 10);
+        let interval = null;
+        let interval1 = null;
+        let interval2 = null;
+        let interval3 = null;
+        let isRunning = false;
         
-        function move() {
-            if(direction === "right") {
-                left += 1
-                if(left > 790) direction = "left"
+        function move1() {
+            if(direction1 === "right1") {
+                left1 += 1
+                if(left1 > 780) direction1 = "left1"
             } else {
-                left -= 1
-                if(left < 1) direction = "right"
+                left1 -= 1
+                if(left1 < 1) direction1 = "right1"
             }
 
-            ball.style.left = `${left}px`
+            ball.style.left = `${left1}px`;
+        }
+        function move2() {
+            if(direction2 === "right2") {
+                left2 += 1
+                if(left2 > 780) direction2 = "left2"
+            } else {
+                left2 -= 1
+                if(left2 < 1) direction2 = "right2"
+            }
+
+            ball3.style.left = `${left2}px`;
         }
 
-        function start() { 
-            interval = setInterval(move, 10)
-         }
-        function stop() { 
-            clearInterval(interval) 
+        function move3() {
+            if(direction3 === "bottom1") {
+                top1 += 1;
+                if( top1 > 780 ) direction3 = "top1";
+            } else {
+                top1 -= 1;
+                if ( top1 < 0) direction3 = "bottom1";
+            }
+            
+            ball1.style.top = `${top1}px`;
+            
+        }
+        function move4() {
+            if(direction4 === "bottom1") {
+                top2 += 1;
+                if( top2 > 780 ) direction4 = "top1";
+            } else {
+                top2 -= 1;
+                if ( top2 < 0) direction4 = "bottom1";
+            }
+            
+            ball2.style.top = `${top2}px`;
+            
         }
 
+            function start() {
+                if (isRunning) return;
+                isRunning = true;
+                interval = setInterval(move1, 10);
+                interval1 = setInterval(move2, 10);
+                interval2 = setInterval(move3, 10);
+                interval3 = setInterval(move4, 10);
+            }
+            function stop() {
+                clearInterval(interval);
+                clearInterval(interval1);
+                clearInterval(interval2);
+                clearInterval(interval3);
+                interval = null;
+                interval1 = null;
+                interval2 = null;
+                interval3 = null;
+                isRunning = false;
+            }
 
-        document.querySelector("#box1").textContent = "Hello <b>DOM</b>" 
-        document.querySelector("#box2").innerHTML = "Hello <b>DOM</b>"
+        
 
-        let hello = document.createTextNode("Hello DOM.")
-        document.querySelector("#box3").appendChild(hello)
+       // document.querySelector("#box1").textContent = "Hello <b>DOM</b>" 
+       // document.querySelector("#box2").innerHTML = "Hello <b>DOM</b>"
 
-        let hello1 = document.createElement("b")
-        hello1.textContent = "Hello DOM."
-        document.querySelector("div").appendChild(hello1)
+        // let hello = document.createTextNode("Hello DOM.")
+        // document.querySelector("#box3").appendChild(hello)
 
-        let hello2 = document.createElement("b")
-        hello2.textContent = "Hello DOM!!!!"
-        let div = document.querySelector("div")
-        div.insertBefore(hello2, div.firstChild)
+        // let hello1 = document.createElement("b")
+        // hello1.textContent = "Hello DOM."
+        // document.querySelector("div").appendChild(hello1)
+
+        // let hello2 = document.createElement("b")
+        // hello2.textContent = "Hello DOM!!!!"
+        // let div = document.querySelector("div")
+        // div.insertBefore(hello2, div.firstChild)
 
         // document.querySelector("div").remove()
 
         //setAttribute
 
-        let hello3 = document.createElement("b")
-        hello3.textContent = "Hello DOM....."
-        hello.setAttribute("title", "A new element")
-        document.querySelector("div").appendChild(hello3)
+        // let hello3 = document.createElement("b")
+        // hello3.textContent = "Hello DOM....."
+        // hello.setAttribute("title", "A new element")
+        // document.querySelector("div").appendChild(hello3)
 
 
         // Selector Method
