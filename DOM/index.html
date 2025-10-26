@@ -76,17 +76,26 @@
         button:active {
             background-color: blue;
         }
+
+        b[title="name"] {
+            color: red;
+        }
+
+        
     </style>
 </head>
 <body>
-    <!-- DOM , Document Object Model
+    <!-- DOM , Document Object Mode
+     ------------------------------
     
      Browser Standard Object 
+     -----------------------
     - Navigator ,
     - window,
     - document
     
      -Node Object
+     ------------
      -Root Node
      -Element Node
      -Text Node
@@ -119,19 +128,18 @@
      <!-- DOM Properties & Methods -->
 
      <!-- textContent and innerHTML -->
-     <!-- <div id="box1">
-        Box One Content
-     </div>
+    <div id="container">
+        <p id="first">First paragraph</p>
+        <p id="second">Second paragraph</p>
+    </div>
+    
+    <button class="button1" onclick="insert()">Insert New Element</button>
 
-     <div id="box2">
-        Box Two Content
-     </div> -->
-
-    <!-- appendChild -->
-<!-- 
-    <div id="box3">
-        An Element.
-    </div> -->
+    <p>
+        Some content <b id="badge">
+            10
+        </b>
+    </p>
     
     <script>
 
@@ -224,14 +232,14 @@
 
         
 
-       // document.querySelector("#box1").textContent = "Hello <b>DOM</b>" 
-       // document.querySelector("#box2").innerHTML = "Hello <b>DOM</b>"
+    //    document.querySelector("#box1").textContent = "Hello <b>DOM</b>" 
+    //    document.querySelector("#box2").innerHTML = "Hello <b>DOM</b> <h1>Hello</h1>"
 
-        // let hello = document.createTextNode("Hello DOM.")
-        // document.querySelector("#box3").appendChild(hello)
+    //     let hello = document.createTextNode("Hello DOM. blablabalbalal..")
+    //     document.querySelector("#box3").appendChild(hello)
 
         // let hello1 = document.createElement("b")
-        // hello1.textContent = "Hello DOM."
+        // hello1.textContent = "Hello DOM"
         // document.querySelector("div").appendChild(hello1)
 
         // let hello2 = document.createElement("b")
@@ -249,12 +257,41 @@
         // document.querySelector("div").appendChild(hello3)
 
 
-        // Selector Method
+         function insert() {
+                // 1️⃣ Select the parent
+                let parent = document.getElementById("container");
+
+                // 2️⃣ Create a new element
+                let newPara = document.createElement("p");
+                newPara.textContent = "✨ New paragraph inserted before the first one!";
+
+                // 3️⃣ Select the reference element (the one to insert before)
+                let reference = document.getElementById("first");
+
+                // 4️⃣ Insert it
+                parent.insertBefore(newPara, reference);
+            }
+
+
+
+            let age = document.createElement("h1");
+
+            age.textContent = "Heyyyyyy";
+            age.classList.add("age", "hey");
+
+            document.querySelector("#first").appendChild(age);
+
+            let hi = age.cloneNode(true);
+            document.querySelector("#second").appendChild(hi) // clone element
+
+            let p = document.querySelector("#badge").parentNode
+
+        //Selector Method
         // document.getElementById()
         // document.getElementsByClassName()
         // document.getElementsByTagName()
 
-        // modern way
+        //modern way
         // document.querySelector()
         // document.querySelectorAll()
     </script>
