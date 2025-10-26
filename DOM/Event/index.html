@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Event </title>
+</head>
+<body>
+    <p id="note">
+        Hello World
+    </p>
+    <button onclick="hello()">Button</button>
+
+    <script>
+
+        // onclick
+        function hello() {
+            document.querySelector("#note").innerHTML = "Hello <i> <h1> Ashmoon </h1> </i>"
+        }
+
+        // addEventListener
+        document.querySelector("button").addEventListener("click", e => {
+            document.querySelector("#note").textContent = "Hello Ashmoon!"
+        })
+
+        // on 
+        document.querySelector("button").onfocus = function(e) {
+            document.querySelector("#note").textContent = "Hello Ashmoon..."
+        }
+    </script>
+</body>
+</html>
