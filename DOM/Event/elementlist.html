@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element List</title>
+</head>
+<body>
+    <!-- <ul>
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+        <li>Item Four</li>
+    </ul> -->
+    <ul></ul>
+    
+    <script>
+        let fruits = ["Apple", "Orange", "Mango", "Banana"];
+        let ul = document.querySelector("ul");
+
+        fruits.map(fruit => {
+            let li = document.createElement("li");
+            li.textContent = fruit;
+            li.style.listStyle = "circle";
+            ul.appendChild(li);
+        });
+        // let items = document.querySelectorAll("ul > li");
+
+        // items.forEach( li => li.textContent)
+        // for(li of items) {
+        //     console.log(li.textContent);
+        // }
+    </script>
+</body>
+</html>
