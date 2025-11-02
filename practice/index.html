@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">
+        Welcome
+    </h1>
+    <p class="msg message">
+        Hello World
+    </p>
+
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <script>
+        const message = document.getElementById("title");
+        console.log(message.innerText);
+
+        // const hello = document.querySelector(".msg");
+        // console.log(hello.textContent);
+        // hello.textContent = "Hello DOM!";
+
+        const helloWorld = document.getElementsByClassName("message");
+        console.log(helloWorld.textContent);
+        helloWorld.textContent = "Hello World";
+
+        const items = document.querySelectorAll("li");
+        items.forEach(item => console.log(item.textContent));
+
+    </script>
+</body>
+</html>

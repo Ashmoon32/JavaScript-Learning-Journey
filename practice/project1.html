@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Change on Click</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #btn {
+            padding: 8px 15px;
+            background-color: rgb(39, 130, 204);
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+        }
+        #btn:active {
+            background-color: rgb(8, 8, 55);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="greeting">Hello!</h1>
+    <button id="btn">Click to Change Greeting Text</button>
+    
+    <script>
+        const greeting = document.getElementById("greeting");
+        const button = document.getElementById("btn");
+
+        const greetingMessages = ["Hello!", "Hey Welcome!", "I am Ashmoon.", "I am 20 years old IT student.", "I am from Myanmar also known as Burma!"];
+        let index = 0
+
+        button.addEventListener("click", () => {
+            index++;
+            if( index >= greetingMessages.length) index = 0;
+            greeting.textContent = greetingMessages[index];
+        })
+    </script>
+</body>
+</html>

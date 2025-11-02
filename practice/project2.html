@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Change on Click</title>
+    <style>
+         body {
+            height: 100vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ccc;
+        }
+
+        #btn {
+            padding: 15px 15px;
+            background-color: rgb(39, 130, 204);
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+            font-style: italic;
+        }
+
+        #btn:hover {
+            transform: translateY(-5px);
+            background-color: rgb(82, 165, 232);;
+        }
+
+        #btn:active {
+            background-color: rgb(7, 7, 45);
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">click to change background color</button>
+
+    <script>
+        const body = document.querySelector("body");
+        const button = document.querySelector("#btn");
+        const colors = ["#ccc","red", "green", "blue", "yello", "black", "violet"];
+        let i = 0;
+
+        button.addEventListener("click", () => {
+            i++;
+            if (i >= colors.length) i = 0;
+            body.style.backgroundColor = colors[i];
+        });
+    </script>
+</body>
+</html>
