@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Attributes</title>
+    <style>
+        body {
+            background-color: #5E747E;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+            border: 2px solid palevioletred;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img1.png" alt="img1" id="img1">
+    <button id="btn">Click to change image</button>
+
+    <script>
+        const img = document.getElementById("img1");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            img.setAttribute("src", "img2.png");
+            img.setAttribute("alt", "img2");
+        });
+    </script>
+</body>
+</html>
+

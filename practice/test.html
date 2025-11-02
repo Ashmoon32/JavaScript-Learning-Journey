@@ -17,6 +17,16 @@
         <li>JS</li>
     </ul>
 
+    <ul id="shopping-list">
+    </ul>
+
+    <div>
+        <ul id="toDoList">
+            <li>Wake up 6 AM</li>
+        </ul>
+        <button id="addBtn">Add</button>
+    </div>
+
     <script>
         // const fruits = ["apple", "orange", "banana"];
         // fruits.forEach(function(fruit) {
@@ -42,6 +52,37 @@
         items.forEach( item => {
             item.style.color = "blue";
         })
+
+
+        const newItem = document.createElement("li");
+        const newItem2 = document.createElement("li");
+        const newItem3 = document.createElement("li");
+        const header = document.createElement("h1");
+
+        newItem.textContent = "Apple";
+        newItem2.textContent = "Orange";
+        newItem3.textContent = "Banana";
+        header.innerHTML = "<i>Welcome to My Shopping..</i>";
+
+        const shoppingList = document.getElementById("shopping-list");
+        
+        shoppingList.appendChild(header);
+        shoppingList.appendChild(newItem);
+        shoppingList.appendChild(newItem2);
+        shoppingList.appendChild(newItem3);
+
+       shoppingList.removeChild(newItem);
+
+       // To Do List Section
+
+       const lists = document.getElementById("toDoList");
+       const addButton = document.getElementById("addBtn");
+
+       addButton.addEventListener("click", () => {
+        let newList = document.createElement("li");
+        newList.textContent = "Do Workout 45 min";
+        lists.appendChild(newList);
+       });
     </script>
 </body>
 </html>

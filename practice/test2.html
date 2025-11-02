@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM practice</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .container {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(30deg, rgb(211, 56, 13), rgb(11, 143, 190));
+            }
+
+            input {
+                margin: 15px;
+                padding: 15px 20px;
+                width: 400px;
+                border: none;
+                border-radius: 20px;
+                background: #ccc;
+                outline: none;
+            }
+
+            input:focus {
+                border: 1px solid rgb(0, 0, 0);
+                box-shadow: 0px 0px 5px 3px rgb(120, 33, 208);
+            }
+            
+            input::placeholder {
+                font-size: 1rem;
+                padding: 5px;
+            }
+            button {
+                margin: 5px;
+                padding: 5px;
+                flex: 1;
+                width: 70px;
+                border-radius: 8px;
+                border: none;
+                color: #ccc;
+                background: #000;
+                font-size: 1rem;
+            }
+
+            button:hover {
+                background: #171717;
+            }
+
+            button:active{
+                background-color: white;
+                color: #000;
+            }
+
+            .button-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 300px;
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="userInput" placeholder="Enter Item">
+        <div class="button-container">
+                    <button id="addBtn">Add</button>
+                    <button id="removeBtn">Remove</button>
+                    <button id="removeAllBtn">Remove All</button>
+        </div>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        const input = document.getElementById("userInput");
+        const addButton = document.getElementById("addBtn");
+        const removeButton = document.getElementById("removeBtn");
+        const removeAllButton = document.getElementById("removeAllBtn");
+        const lists = document.getElementById("list");
+
+        let li = document.createElement("li");
+        li.textContent = input.value;
+        addButton.addEventListener("click", () => {
+            if(input.value.trim() !== "") {
+                li = document.createElement("li");
+                li.textContent = input.value;
+                li.style.textTransform = "capitalize";
+                li.style.fontStyle = "italic";
+                li.style.fontSize = "1.3rem";
+                li.style.color = "#fff";
+                li.style.listStyleType = "square";
+                li.style.marginBottom = "5px";
+                lists.appendChild(li);
+                input.value = ""; // to clear input field
+            }
+        });
+
+        items = document.querySelectorAll("li");
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                item.remove();
+            });
+        });
+
+   
+    </script>
+</body>
+</html>
