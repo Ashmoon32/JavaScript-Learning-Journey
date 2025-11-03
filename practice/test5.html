@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="contact-form">
+        <input type="text" id="name" class="name" placeholder="Enter your name...">
+        <input type="email" id="email" class="email" placeholder="Enter your email...">
+        <button type="submit">Submit</button>
+        <p id="message"></p>
+    </form>
+
+    <script>
+        const form = document.getElementById("contact-form");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // const name = document.getElementById("name").value;
+            // const email = document.getElementById("email").value;
+
+            // console.log("Name : ", name);
+            // console.log("Email : ", email);
+            const message = document.getElementById("message");
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if ( name === "" || email === "") {
+                // alert("Please fill in all fields!");
+                message.innerText = "❌ Please fill in all fields!";
+                message.style.color = "red";
+            } else {
+                // alert("Form submitted successfully!");
+                message.innerText = "✅ Successfully submitted!";
+                message.style.color = "green";
+                let result = name + " and " + email;
+                form.append(result);
+                form.reset();
+            }
+        });
+
+
+    </script>
+</body>
+</html>

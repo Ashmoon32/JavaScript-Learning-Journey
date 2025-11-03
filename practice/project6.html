@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Form Validation</title>
+</head>
+<body>
+    <h2>Join our Newsletter</h2>
+    <form id="signupForm">
+        <input type="text" id="email" placeholder="Enter email...">
+        <button type="submit">Subscribe</button>
+        <p id="msg"></p>
+    </form>
+    
+    <script>
+        const form = document.getElementById("signupForm");
+        const email = document.getElementById("email");
+        const message = document.getElementById("msg");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const emailVal = email.value.trim();
+
+            if( !emailVal.includes("@") || !emailVal.includes(".") ) {
+                message.innerText = "❌Please enter a valid email address!";
+                message.style.color = "red";
+            } else {
+                message.innerText = "✅Subscribed successfully!";
+                message.style.color = "green";
+                form.reset();
+            }
+
+        });
+    </script>
+</body>
+</html>
