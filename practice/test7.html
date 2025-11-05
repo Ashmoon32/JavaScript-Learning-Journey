@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Title</h2>
+        <p>Paragraph</p>
+        <p>Paragraph2</p>
+    </div>
+
+    <script> 
+        const container = document.querySelector(".container");
+
+         console.log(container.children);
+         console.log(container.firstElementChild);
+        console.log(container.lastElementChild);
+
+         const para = document.querySelector("p");
+         console.log(para.parentElement);
+
+         console.log(para.nextElementSibling);
+         console.log(para.previousElementSibling);
+    </script>
+</body>
+</html>

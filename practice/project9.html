@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <h1>Anime in a Nutshell</h1>
+    <input id="searchInput" placeholder="Enter anime name...">
+    <button onclick="searchAnime()">Search</button>
+
+    <div id="result"></div>
+    <script>
+
+        async function searchAnime() {
+            const query = document.getElementById('searchInput').value.trim();
+            if( !query) {
+                alert("Please enter an anime name!");
+                return;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = "Searching...";
+
+            try {
+                const res = await fetch(`https://api.jikan.moe/v4/anime?q=${query}&limit=1`);
+                const data = await res.json();
+
+                if(data.data.length === 0){
+                    resultDiv.innerHTML = "No results found!";
+                    return;
+                }
+
+                const anime = data.data[0];
+                resultDiv.innerHTML = `
+                <div class="anim-card">
+                    <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
+                    <h2>${anime.title}</h2>
+                    <p><strong>Episodes:</strong> ${anime.episodes || "Unknown"}</p>
+                    <p><strong>Rating:</strong> ${anime.scroe || "N/A"}</p>
+                    <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : "No description available."}</p>
+                    </div>
+                    `;
+            }catch(error) {
+                resultDiv.innerHTML = "Error fetching data.";
+                console.log("Error:", error);
+            }
+        }
+
+    </script>
+</body>
+</html>

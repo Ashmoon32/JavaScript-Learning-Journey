@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Stop Watch</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stopWatch"></div>
+        <div>
+            <div class="btn start-btn">Start</div>
+            <div class="btn stop-btn">Stop</div>
+            <div class="btn continue-btn">Continue</div>
+            <div class="btn restart-btn">Restart</div>
+        </div>
+    </div>
+
+    <script>
+        const stopWatch = document.getElementsByClassName("stopWatch")[0];
+        const startBtn = document.getElementsByClassName("start-btn")[0];
+        const stopBtn = document.getElementsByClassName("stop-btn")[0];
+        const continueBtn = document.getElementsByClassName("continue-btn")[0];
+        const restartbtn = document.getElementsByClassName("restartBtn")[0];
+
+        let seconds = 0,
+         minutes = 0,
+         hours = 0;
+
+
+         startTime = () => console.log("The time is running...");
+         let intervalId = setInterval(startTime, 1000);
+
+         stopBtn.addEventListener("click", () => {
+            clearInterval(intervalId);
+         });
+    </script>
+</body>
+</html>

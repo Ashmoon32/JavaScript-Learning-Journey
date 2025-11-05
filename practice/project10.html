@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add / Remove Note</title>
+</head>
+<body>
+    <div class="note-container"></div>
+    <button id="addBtn">Add Note</button>
+
+    <script>
+        const container = document.querySelector(".note-container");
+        const button = document.getElementById("addBtn");
+
+        button.addEventListener("click", () => {
+            const note = document.createElement("div");
+            note.classList.add("note");
+            note.innerText = "New Note";
+            note.style.background = "#ccc";
+            note.style.border = "2px solid black";
+            note.style.width = "200px";
+            note.style.height = "200px";
+
+            note.addEventListener("click", () => {
+                note.remove();
+            });
+
+            container.appendChild(note);
+        });
+
+       
+    </script>
+</body>
+</html>
