@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        video {
+            border: 2px solid black;
+            height: 500px;
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
-    
-</body>
+    <video autoplay id="cameraFeed"></video>
+    <script>
+        const cameraFeed = document.getElementById("cameraFeed");
+
+        navigator.mediaDevices.getUserMedia({video: true})
+        .then(stream => {
+            cameraFeed.srcObject = stream;
+        })
+        .catch(error => {
+            console.log("Error accessing camera:", error);
+        });
+    </script>
+    </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="products">
+        <button id="render1">Render with innerHTML</button>
+        <button id="render2">Render with createElement</button>
+    </div>
+
+    <script>
+        const products = ["Laptop", "Phone", "Desktop"];
+        const container = document.querySelector(".products");
+
+        document.getElementById("render1").addEventListener("click", () => {
+            container.innerHTML = products.map( p => `<p>${p}</p>`).join('');
+        });
+
+        document.getElementById("render2").addEventListener("click", () => {
+            container.innerHTML = '';
+            products.forEach(p => {
+                const el = document.createElement("p");
+                el.textContent = p;
+                container.appendChild(el);
+            });
+        });
+    </script>
+</body>
+</html>
